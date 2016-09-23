@@ -22,18 +22,24 @@ var server              = http.createServer(app),
     io                  = require("socket.io").listen(server);
     mongoose.Promise    = bluebird;
 
-    server.listen(app.get('port'));
     app.set("view engine", "jade");
+    app.use(express.static("public"));
+    server.listen(app.get('port'));
 
     seedDB();
 
     app.get("/", function(req, res){
-        res.redirect("/index");
+        res.redirect("/rooms");
     });
 
-    app.get("/index", function(req, res){
-        Room.findOne().then(function(room){
-            console.log(room);
-            res.render("lobby", {room: room});
+    app.get("/rooms", function(req, res){
+        //TODO: get list of all rooms
+        Room.find().then(function(rooms){
+            console.log(rooms);
+            res.render("lobby", {rooms: rooms});
         });
+    });
+
+    app.get("/rooms/:id", function(req, res){
+        // TODO: after user has selected a room, redirect, load all chats, and make user "join" that channel on socket.io
     });
