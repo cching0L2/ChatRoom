@@ -1,10 +1,11 @@
-mixin roomItem()
+mixin roomItem(room)
   div.item
     div.info
-        h3.name General Room
+        h3.name= room.name
         div.meta
-            h5.member-count #[em 8 members]
-            h5.last-activity Last update: Saturday June 10, 2016
+            h5.member-count #[em #{room.members.length} members]
+            if room.lastActivity 
+              h5.last-activity Last update: #{room.lastActivity}
     div.action
         button#preview Preview
         button#join Join

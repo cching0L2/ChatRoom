@@ -1,6 +1,12 @@
+include ./toolbar.jade
+
 doctype html
 html(lang="en")
     head
         title Chat Room | Random Room
         link(rel="stylesheet" href="./css/lobby.css" type="text/css")
+        link(rel="stylesheet" href="./css/toolbar.css" type="text/css")
+        link(rel="stylesheet" href="./css/app.css" type="text/css")
+        link(href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet")
     body
+        +toolbar(user)

@@ -3,8 +3,5 @@ include ./roomItem.jade
 
 #container
   div.room.container
-    +roomItem()
-    +roomItem()
-    +roomItem()
-    +roomItem()
-    +roomItem()
+    each room in rooms
+      +roomItem(room)

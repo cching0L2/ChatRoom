@@ -1,0 +1,39 @@
+#toolbar {
+    display: block;
+    width: 100%;
+    position: absolute;
+    vertical-align: middle;
+}
+  #toolbar .right {
+    display: inline-block;
+    float: right;
+  }
+    #toolbar .right .welcome {
+        color: #fff;
+        display: inline-block;
+        vertical-align: middle;
+    }
+      #toolbar .welcome .msg {
+          font-size: 12px;
+          margin-right: 8px;
+      }
+
+    #toolbar .right .buttons {
+        display: inline-block;
+        margin-right: 16px;
+        vertical-align: middle;
+    }
+      #toolbar .right .buttons button {
+          display: inline-block;
+          margin-right: 0;
+          width: 100px;
+      }
+      #toolbar .right .buttons #register {
+          background-color: #73628A;
+      }
+      #toolbar .right .buttons #login {
+          background-color: #313D5A;
+      }
+      #toolbar .right .buttons #logout {
+          background-color: #777777;
+      }
