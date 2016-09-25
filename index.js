@@ -11,10 +11,15 @@ var Room                = require(path.join(__dirname, "model/RoomModel")),
     User                = require(path.join(__dirname, "model/UserModel")),
     Message             = require(path.join(__dirname, "model/MessageModel"));
 
+var auth                = require(path.join(__dirname, "routes/auth")),
+    room                = require(path.join(__dirname, "routes/room")),
+    chat                = require(path.join(__dirname, "routes/chat"));
 
 var bodyParser          = require("body-parser"),
     bluebird            = require("bluebird"),
     seedDB              = require(path.join(__dirname, "seedDB"));
+    passport            = require("passport"),
+    LocalStrategy       = require("passport-local").Strategy;
 
     app.set('port', PORT);
 
@@ -23,26 +28,23 @@ var server              = http.createServer(app),
     mongoose.Promise    = bluebird;
 
     app.set("view engine", "jade");
+
     app.use(express.static("public"));
+    app.use(bodyParser.urlencoded({extended: false}));
+    app.use(passport.initialize());
+    app.use("/auth", auth);
+    app.use("/rooms", room);
+    app.use("/chats", chat);
+
+    require(path.join(__dirname, "config/passport"))(passport);
+
+
     server.listen(app.get('port'));
 
     seedDB();
 
     app.get("/", function(req, res){
         res.redirect("/rooms");
-    });
-
-    app.get("/rooms", function(req, res){
-        //TODO: get list of all rooms
-        Room.find().then(function(rooms){
-            res.render("lobby", {
-              rooms: rooms
-            });
-        });
-    });
-
-    app.get("/rooms/:id", function(req, res){
-        // TODO: after user has selected a room, redirect, load all chats, and make user "join" that channel on socket.io
     });
 
     //*-------- SOCKET EVENTS --------*//

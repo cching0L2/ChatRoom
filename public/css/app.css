@@ -12,23 +12,55 @@ html, body {
     height: inherit;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, a{
   margin: 0;
   padding: 0;
   cursor: default;
 }
 
-button {
+a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button, .button {
     color: white;
     font-size: 13px;
     font-family: inherit;
     display: inline-block;
     width: 80px;
     height: 24px;
+    line-height: 24px;
     margin: 4px;
     outline: none;
     border: none;
 }
-    button:hover {
+    button:hover, .button:hover {
         cursor: pointer;
     }
+    button.cancel, .button.cancel {
+        background-color: #777777;
+    }
+
+.flash {
+    font-size: 11px;
+    display: block;
+    text-align: center;
+}
+    .flash img {
+        width: 16px;
+        height: 16px;
+        margin-right: 2px;
+    }
+    .flash h4 {
+        margin-top: 2px;
+    }
+    .flash > * {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+.flash.error {
+    color: #a9362e;
+}

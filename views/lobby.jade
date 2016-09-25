@@ -1,6 +1,8 @@
 include ./includes/header.jade
-include ./roomItem.jade
+include ./room/roomItem.jade
+include ./includes/toolbar.jade
 
++toolbar(user)
 #container
   div.room.container
     each room in rooms

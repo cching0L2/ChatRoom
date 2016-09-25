@@ -5,7 +5,7 @@ mixin toolbar(user)
         div.welcome
           h4.msg Hello, #[span.username= user.username + ' !']
       div.buttons
-        button#register Register 
-        button#login Login
-        button#logout Logout
+        button#register #[a(href="/auth/register") Register] 
+        button#login #[a(href="/auth/login") Login] 
+        button#logout #[a(href="/auth/logout") Logout] 
       
