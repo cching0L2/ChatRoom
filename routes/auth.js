@@ -11,7 +11,6 @@ var User            = require("../model/UserModel");
 
     router.post("/register",
         function(req, res, next){
-            console.log(req.body);
             next();
         }, passport.authenticate("local-register", {
             successRedirect: "/",
@@ -25,8 +24,6 @@ var User            = require("../model/UserModel");
 
     router.post("/login",
         function(req, res, next){
-            console.log(req);
-            console.log("POST login hit");
             next();
         }, passport.authenticate("local-login", {
             successRedirect: "/",
@@ -34,7 +31,7 @@ var User            = require("../model/UserModel");
         })
     );
 
-    router.post("/logout", function(req, res){
+    router.get("/logout", function(req, res){
         req.logout();
         res.redirect("/");
     });

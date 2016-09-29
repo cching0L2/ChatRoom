@@ -19,7 +19,8 @@ var bodyParser          = require("body-parser"),
     bluebird            = require("bluebird"),
     seedDB              = require(path.join(__dirname, "seedDB"));
     passport            = require("passport"),
-    LocalStrategy       = require("passport-local").Strategy;
+    LocalStrategy       = require("passport-local").Strategy,
+    session             = require("express-session");
 
     app.set('port', PORT);
 
@@ -31,7 +32,13 @@ var server              = http.createServer(app),
 
     app.use(express.static("public"));
     app.use(bodyParser.urlencoded({extended: false}));
+    app.use(session({
+        secret: "tomahto",
+        saveUninitialized: false,
+        resave: false
+    }));
     app.use(passport.initialize());
+    app.use(passport.session());
     app.use("/auth", auth);
     app.use("/rooms", room);
     app.use("/chats", chat);

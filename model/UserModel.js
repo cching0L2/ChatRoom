@@ -3,21 +3,21 @@ var mongoose        = require("mongoose"),
     autoIncrement   = require("mongoose-auto-increment");
 
 var userSchema = new Schema({
-    username:       {
-                        type: String,
-                        required: true
-                    },
-    password:       {
-                        type: String,
-                        required: true,
-                        set: hashPassword
-                    },
-    alias:          String,
-    joinedRooms:    [{
-                        type: Number,
-                        ref: "Room"
-                    }],
-    createdAt:      Date
+    username: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true,
+        set: hashPassword
+    },
+    alias: String,
+    joinedRooms: [{
+        type: Number,
+        ref: "Room"
+    }],
+    createdAt: Date
 });
 
 function hashPassword(password){
