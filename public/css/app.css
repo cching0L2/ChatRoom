@@ -24,6 +24,11 @@ a {
     cursor: pointer;
 }
 
+textarea {
+    resize: none;
+    outline: none;
+}
+
 button, .button {
     color: white;
     font-size: 13px;
@@ -42,6 +47,14 @@ button, .button {
     button.cancel, .button.cancel {
         background-color: #777777;
     }
+
+.container {
+    width: 100%;
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 .flash {
     font-size: 11px;

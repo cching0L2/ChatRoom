@@ -1,0 +1,49 @@
+include ./includes/header.jade
+include ./room/roomItem.jade
+include ./includes/toolbar.jade
+
++toolbar(user)
+div.room.container
+    div.chats
+        div.chat
+            div.meta
+                h4.author Timmy Cruise
+                h4.time 10:50am Sep 5, 2016
+            div.content
+                |Church's chicken is the best chicken ever!
+        div.chat
+            div.meta
+                h4.author Tom Blank
+                h4.time 10:56am Sep 5, 2016
+            div.content
+                |Church's chicken is the best chicken ever! Spicy chicken is the best and original chicken is nothing!
+        div.chat
+            div.meta
+                h4.author Sherry Sherlock
+                h4.time 10:56am Sep 5, 2016
+            div.content
+                |Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        div.chat
+            div.meta
+                h4.author Sherry Sherlock
+                h4.time 10:56am Sep 5, 2016
+            div.content
+                |Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        div.chat
+            div.meta
+                h4.author Sherry Sherlock
+                h4.time 10:56am Sep 5, 2016
+            div.content
+                |Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        div.chat
+            div.meta
+                h4.author Tom Blank
+                h4.time 10:56am Sep 5, 2016
+            div.content
+                |Church's chicken is the best chicken ever! Spicy chicken is the best and original chicken is nothing!
+    div.room.compose
+        div.room.compose.form
+            h4.title Say Something...
+            form(action="/rooms/" + room._id + "/chats" method="POST")
+                textarea(autofocus="true" required="true").chat-text
+                button(type="submit").post Post

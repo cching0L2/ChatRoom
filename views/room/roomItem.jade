@@ -7,6 +7,6 @@ mixin roomItem(room)
             if room.lastActivity 
               h5.last-activity Last update: #{room.lastActivity}
     div.action
-        button#preview Preview
-        button#join Join
+        a.button(id="preview" href="/rooms/"+room._id+"?mode=preview") Preview
+        a.button(id="join" href="/rooms/"+room._id+"?mode=join") Join
   div.sep

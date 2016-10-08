@@ -4,7 +4,11 @@ var express = require("express"),
     Message = require("../model/MessageModel");
 
     router.get("/", function(req, res){
-      res.send("chats");
+        res.send("chats");
+    });
+
+    router.post("/", function(req, res){
+        res.sendStatus(200);
     });
 
 module.exports = router;

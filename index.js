@@ -41,7 +41,7 @@ var server              = http.createServer(app),
     app.use(passport.session());
     app.use("/auth", auth);
     app.use("/rooms", room);
-    app.use("/chats", chat);
+    app.use("/rooms/:id/chats", chat);
 
     require(path.join(__dirname, "config/passport"))(passport);
 
