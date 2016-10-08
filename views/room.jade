@@ -2,6 +2,11 @@ include ./includes/header.jade
 include ./room/roomItem.jade
 include ./includes/toolbar.jade
 
+script(type="text/javascript"). // make template params available to js files 
+    var user = !{JSON.stringify(user)}
+script(src="/js/room.js")
+script(src="/socket.io/socket.io.js")
+
 +toolbar(user)
 div.room.container
     div.chats
@@ -17,33 +22,19 @@ div.room.container
                 h4.time 10:56am Sep 5, 2016
             div.content
                 |Church's chicken is the best chicken ever! Spicy chicken is the best and original chicken is nothing!
-        div.chat
-            div.meta
-                h4.author Sherry Sherlock
-                h4.time 10:56am Sep 5, 2016
-            div.content
-                |Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        div.chat
-            div.meta
-                h4.author Sherry Sherlock
-                h4.time 10:56am Sep 5, 2016
-            div.content
-                |Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        div.chat
-            div.meta
-                h4.author Sherry Sherlock
-                h4.time 10:56am Sep 5, 2016
-            div.content
-                |Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        div.chat
-            div.meta
-                h4.author Tom Blank
-                h4.time 10:56am Sep 5, 2016
-            div.content
-                |Church's chicken is the best chicken ever! Spicy chicken is the best and original chicken is nothing!
     div.room.compose
         div.room.compose.form
-            h4.title Say Something...
-            form(action="/rooms/" + room._id + "/chats" method="POST")
-                textarea(autofocus="true" required="true").chat-text
-                button(type="submit").post Post
+            if user
+                if mode === "preview"
+                    div.warning
+                        i.fa.fa-exclamation
+                        span.warning.msg This is only a preview. You must join the room to post.
+                else 
+                    h4.title Say Something...
+                    form(action="/rooms/" + room._id + "/chats" method="POST")
+                        textarea(autofocus="true" id="text" name="text" required="true").chat-text
+                        button(id="post" type="submit").post Post
+            else 
+                div.warning
+                    i.fa.fa-lock
+                    span.warning.msg You must register or login to post here

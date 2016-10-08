@@ -12,6 +12,11 @@ var path        = require("path"),
             description: "This is a room for testing."
         });
 
+        var studyRoom = new Room ({
+            name: "Acedemic Discussion",
+            description: "For some serious academic debates."
+        })
+
         // var testUser = new User ({
         //     username: "myUsername",
         //     alias: "Test User"
@@ -26,11 +31,12 @@ var path        = require("path"),
         var clearMessage = Message.remove();
 
         var createTestRoom = Room.create(testRoom);
+        var createStudyRoom = Room.create(studyRoom);
         //var createTestUser = User.create(testUser);
         var createTestMessage = Message.create(testMessage);
 
         Promise.all([clearRoom, clearUser, clearMessage]).then(function(){
-            Promise.all([createTestRoom, createTestMessage]).then(function(){
+            Promise.all([createTestRoom, cretaeStudyRoom, createTestMessage]).then(function(){
                 console.log("done setting up database");
             });
         });

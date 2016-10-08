@@ -1,21 +1,31 @@
 .lobby.container {
-    background-color: #F1F2EE;
-    width: 800px;
+  background-color: #F1F2EE;
+  width: 800px;
+  margin: 32px auto;
 }
+.lobby.header {
+  width: 100%;
+  line-height: 32px;
+  background-color: #183642;
+}
+  .lobby.header .title {
+    display: block;
+    text-align: center;
+    vertical-align: center;
+    color: #aaa;
+    font-size: 14px;
+  }
   .lobby .sep {
     height: 2px;
     background-color: #0B4F6C;
   }
   .lobby .item {
-    /*border: 1px solid #000;*/
     display: table;
     width: 100%;
     height: 60px;
-    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
   }
     .lobby .info {
       display: table-cell;
-      /*border: 1px solid #f00;*/
       padding-left: 20px;
       padding-top: 4px;
     }

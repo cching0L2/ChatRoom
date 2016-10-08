@@ -1,12 +1,26 @@
 #toolbar {
-    display: block;
+    margin: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
-    position: absolute;
     vertical-align: middle;
 }
+  #toolbar .left {
+    display: inline-block;
+  }
+    #toolbar .left #back {
+      margin-left: 46px;
+      width: 140px;
+      font-size: 14px;
+      color: #fff;
+      text-decoration: underline;
+    }
+      #toolbar .left #back a{
+        margin-left: 4px; 
+      }
   #toolbar .right {
     display: inline-block;
-    float: right;
   }
     #toolbar .right .welcome {
         color: #fff;
@@ -18,12 +32,12 @@
           margin-right: 8px;
       }
 
-    #toolbar .right .buttons {
+    #toolbar .buttons {
         display: inline-block;
         margin-right: 16px;
         vertical-align: middle;
     }
-      #toolbar .right .buttons button {
+      #toolbar .buttons button {
           display: inline-block;
           margin-right: 0;
           width: 100px;

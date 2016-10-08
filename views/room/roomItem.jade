@@ -1,4 +1,5 @@
 mixin roomItem(room)
+  div.sep
   div.item
     div.info
         h3.name= room.name
@@ -9,4 +10,3 @@ mixin roomItem(room)
     div.action
         a.button(id="preview" href="/rooms/"+room._id+"?mode=preview") Preview
         a.button(id="join" href="/rooms/"+room._id+"?mode=join") Join
-  div.sep

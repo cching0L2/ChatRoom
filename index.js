@@ -20,16 +20,12 @@ var bodyParser          = require("body-parser"),
     seedDB              = require(path.join(__dirname, "seedDB"));
     passport            = require("passport"),
     LocalStrategy       = require("passport-local").Strategy,
-    session             = require("express-session");
+    session             = require("express-session"),
+    configIO            = require(path.join(__dirname, "config/configio"));
 
-    app.set('port', PORT);
-
-var server              = http.createServer(app),
-    io                  = require("socket.io").listen(server);
-    mongoose.Promise    = bluebird;
+    mongoose.Promise = bluebird;
 
     app.set("view engine", "jade");
-
     app.use(express.static("public"));
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(session({
@@ -39,30 +35,23 @@ var server              = http.createServer(app),
     }));
     app.use(passport.initialize());
     app.use(passport.session());
+    app.use(function attachPath(req, res, next){
+      res.locals.path = req.path;
+      next();
+    });
     app.use("/auth", auth);
     app.use("/rooms", room);
     app.use("/rooms/:id/chats", chat);
 
     require(path.join(__dirname, "config/passport"))(passport);
 
-
-    server.listen(app.get('port'));
+    var server = http.createServer(app);
+    var io = require(path.join(__dirname, "config/socketio"))(server);
+    configIO(io);
+    server.listen(PORT);
 
     seedDB();
 
     app.get("/", function(req, res){
         res.redirect("/rooms");
-    });
-
-    //*-------- SOCKET EVENTS --------*//
-    io.on("connection", function(socket){
-        console.log("A user has entered the room");
-
-        socket.on("enter room", function(data){
-
-        });
-
-        socket.on("leave room", function(data){
-
-        });
     });
